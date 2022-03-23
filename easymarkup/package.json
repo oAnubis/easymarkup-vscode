@@ -1,0 +1,23 @@
+{
+    "name": "easymarkup",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": ">=1.60.1"
+    },
+    "publisher": "Anubis",
+    "contributes": {
+        "languages": [{
+            "id": "easymarkup",
+            "aliases": ["easymarkup", "EasyMarkup", "em"],
+            "extensions": [".txt"],
+            "configuration": "./language-configuration.json"
+        }
+    ],
+        
+        "grammars": [{
+            "language": "easymarkup",
+            "scopeName": "source.easymarkup",
+            "path": "./syntaxes/easymarkup.tmlanguage.json"
+        }]
+    }
+}

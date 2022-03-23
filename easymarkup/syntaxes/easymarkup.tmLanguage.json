@@ -1,0 +1,122 @@
+{
+  "fileTypes": [
+    "txt"
+  ],
+  "name": "easymarkup",
+  "patterns": [
+    {
+      "include": "#main"
+    }
+  ],
+  "scopeName": "source.easymarkup",
+  "uuid": "1aa11fb8-8015-5ee6-a7ad-10ebe3b73a6b",
+  "repository": {
+    "main": {
+      "patterns": [
+        {
+          "match": "(AliasRecipes|CustomFoods|CustomBioFuels|CustomFabricators|CustomCraftingTabs|AddedRecipes|CustomFragmentCounts|CustomSize|CustomTab|ModifiedRecipes|MovedRecipes)",
+          "name": "support.type.easymarkup"
+        },
+        {
+          "match": "(:|;|,|/)",
+          "name": "punctuation.terminator.easymarkup"
+        },
+        {
+          "match": "(#.*)",
+          "name": "comment.line.number-sign.easymarkup"
+        },
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#main__1"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "main__1": {
+      "patterns": [
+        {
+          "match": "(AliasRecipes|CustomFoods|CustomBioFuels|CustomFabricators|CustomCraftingTabs|AddedRecipes|CustomFragmentCounts|CustomSize|CustomTab|ModifiedRecipes|MovedRecipes)",
+          "name": "support.type.easymarkup"
+        },
+        {
+          "match": "(#.*)",
+          "name": "comment.line.number-sign.easymarkup"
+        },
+        {
+          "match": "(\\S+?(?=:))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "begin": "(:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#main__2"
+            }
+          ],
+          "end": "(;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "main__2": {
+      "patterns": [
+        {
+          "match": "(NO|YES)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        },
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          },
+          "contentName": "string.quoted.double.easymarkup",
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "main__3": {
+      "patterns": []
+    }
+  }
+}
