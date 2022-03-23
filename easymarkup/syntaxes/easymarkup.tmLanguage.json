@@ -57,7 +57,7 @@
           "name": "comment.line.number-sign.easymarkup"
         },
         {
-          "match": "(\\S+?(?=:))",
+          "match": "(\\S+?(?=\\s*:))",
           "name": "entity.name.easymarkup"
         },
         {
