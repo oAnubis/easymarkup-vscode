@@ -1,10 +1,15 @@
 {
     "name": "easymarkup",
+    "displayName": "EasyMarkup Extension",
     "version": "0.0.1",
     "engines": {
         "vscode": ">=1.60.1"
     },
-    "publisher": "Anubis",
+    "categories": [
+        "Extension Packs", "Programming Languages"
+      ],
+    "publisher": "oAnubis",
+    "repository": "https://github.com/oAnubis/easymarkup-vscode",
     "contributes": {
         "languages": [{
             "id": "easymarkup",
