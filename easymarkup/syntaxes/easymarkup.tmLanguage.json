@@ -14,54 +14,312 @@
     "main": {
       "patterns": [
         {
-          "match": "(AliasRecipes|CustomFoods|CustomBioFuels|CustomFabricators|CustomCraftingTabs|AddedRecipes|CustomFragmentCounts|CustomSize|CustomTab|ModifiedRecipes|MovedRecipes)",
-          "name": "support.type.easymarkup"
+          "begin": "(AliasRecipes(?=\\s*:))",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#aliasrecipes"
+            }
+          ],
+          "end": "(\\);)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(AddedRecipes(?=\\s*:))",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#aliasrecipes"
+            }
+          ],
+          "end": "(\\);)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(CustomBioFuels(?=\\s*:))",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#custombiofuels"
+            }
+          ],
+          "end": "(\\);)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(CustomFoods(?=\\s*:))",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfoods"
+            }
+          ],
+          "end": "(\\);)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(CustomFabricators(?=\\s*:))",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfabricators"
+            }
+          ],
+          "end": "(\\);)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(CustomCraftingTabs(?=\\s*:))",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customcraftingtabs"
+            }
+          ],
+          "end": "(\\);)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(CustomSizes(?=\\s*:))",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customsizes"
+            }
+          ],
+          "end": "(\\);)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(ModifiedRecipes(?=\\s*:))",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#modifiedrecipes"
+            }
+          ],
+          "end": "(\\);)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(MovedRecipes(?=\\s*:))",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#movedrecipes"
+            }
+          ],
+          "end": "(\\);)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(CustomFragmentCounts(?=\\s*:))",
+          "beginCaptures": {
+            "1": {
+              "name": "support.type.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfragmentcount"
+            }
+          ],
+          "end": "(\\);)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "match": "(\\()",
+          "name": "punctuation.parenthesis.open.easymarkup"
+        },
+        {
+          "match": "(\\))",
+          "name": "punctuation.parenthesis.close.easymarkup"
         },
         {
           "match": "(:|;|,|/)",
           "name": "punctuation.terminator.easymarkup"
         },
         {
+          "match": "(\\-)",
+          "name": "keyword.operator.easymarkup"
+        },
+        {
           "match": "(#.*)",
           "name": "comment.line.number-sign.easymarkup"
         },
         {
-          "begin": "(\\()",
+          "match": "(\\S+)",
+          "name": "invalid.illegal.easymarkup"
+        }
+      ]
+    },
+    "AddedRecipes__1": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|AmountCrafted(?= *:)|Ingredients(?= *:)|Required(?= *:)|Unlocks(?= *:)|ForceUnlockAtStart(?= *:)|LinkedItemIDs(?= *:)|Path(?= *:)|PdaGroup(?= *:)|PdaCategory(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
           "beginCaptures": {
             "1": {
-              "name": "punctuation.parenthesis.easymarkup"
+              "name": "punctuation.terminator.easymarkup"
             }
           },
           "patterns": [
             {
-              "include": "#main__1"
+              "include": "#AddedRecipes__2"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "AddedRecipes__2": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        },
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          },
+          "contentName": "string.quoted.double.easymarkup",
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(\\((?=([^\\x{0022}]*\"[^\\x{0022}]*\")*[^\\x{0022}]*$))",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#AddedRecipes__4"
             }
           ],
           "end": "(\\))",
           "endCaptures": {
             "1": {
-              "name": "punctuation.parenthesis.easymarkup"
+              "name": "punctuation.parenthesis.close.easymarkup"
             }
           }
         }
       ]
     },
-    "main__1": {
+    "AddedRecipes__3": {
+      "patterns": []
+    },
+    "AddedRecipes__4": {
       "patterns": [
         {
-          "match": "(AliasRecipes|CustomFoods|CustomBioFuels|CustomFabricators|CustomCraftingTabs|AddedRecipes|CustomFragmentCounts|CustomSize|CustomTab|ModifiedRecipes|MovedRecipes)",
-          "name": "support.type.easymarkup"
-        },
-        {
-          "match": "(#.*)",
-          "name": "comment.line.number-sign.easymarkup"
-        },
-        {
-          "match": "(\\S+?(?=\\s*:))",
+          "match": "((ItemID(?= *:)|Required(?= *:)))",
           "name": "entity.name.easymarkup"
         },
         {
-          "begin": "(:)",
+          "begin": "(\\:)",
           "beginCaptures": {
             "1": {
               "name": "punctuation.terminator.easymarkup"
@@ -69,22 +327,97 @@
           },
           "patterns": [
             {
-              "include": "#main__2"
+              "include": "#AddedRecipes__5"
             }
           ],
-          "end": "(;)",
+          "end": "(\\;)",
           "endCaptures": {
             "1": {
               "name": "punctuation.terminator.easymarkup"
             }
           }
+        },
+        {
+          "include": "#main"
         }
       ]
     },
-    "main__2": {
+    "AddedRecipes__5": {
       "patterns": [
         {
-          "match": "(NO|YES)",
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        }
+      ]
+    },
+    "aliasrecipes": {
+      "patterns": [
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#aliasrecipes__1"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "aliasrecipes__1": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|AmountCrafted(?= *:)|Ingredients(?= *:)|Required(?= *:)|Unlocks(?= *:)|ForceUnlockAtStart(?= *:)|LinkedItemIDs(?= *:)|Path(?= *:)|PdaGroup(?= *:)|PdaCategory(?= *:)|DisplayName(?= *:)|Tooltip(?= *:)|FunctionalID(?= *:)|SpriteItemID(?= *:)|UnlockedBy(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#aliasrecipes__2"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "aliasrecipes__2": {
+      "patterns": [
+        {
+          "match": "(YES|NO)",
           "name": "constant.language.easymarkup"
         },
         {
@@ -111,12 +444,1290 @@
           }
         },
         {
+          "begin": "(\\((?=([^\\x{0022}]*\"[^\\x{0022}]*\")*[^\\x{0022}]*$))",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#aliasrecipes__4"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "aliasrecipes__3": {
+      "patterns": []
+    },
+    "aliasrecipes__4": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Required(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#aliasrecipes__5"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
           "include": "#main"
         }
       ]
     },
-    "main__3": {
+    "aliasrecipes__5": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        }
+      ]
+    },
+    "custombiofuels": {
+      "patterns": [
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#custombiofuels__1"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "custombiofuels__1": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Energy(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#custombiofuels__2"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "custombiofuels__2": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        },
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          },
+          "contentName": "string.quoted.double.easymarkup",
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(\\((?=([^\\x{0022}]*\"[^\\x{0022}]*\")*[^\\x{0022}]*$))",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#custombiofuels__4"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "custombiofuels__3": {
       "patterns": []
+    },
+    "custombiofuels__4": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Required(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#custombiofuels__5"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "custombiofuels__5": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        }
+      ]
+    },
+    "customcraftingtabs": {
+      "patterns": [
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customcraftingtabs__1"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customcraftingtabs__1": {
+      "patterns": [
+        {
+          "match": "((TabID(?= *:)|DisplayName(?= *:)|SpriteItemID(?= *:)|ParentTabPath(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customcraftingtabs__2"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customcraftingtabs__2": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        },
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          },
+          "contentName": "string.quoted.double.easymarkup",
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(\\((?=([^\\x{0022}]*\"[^\\x{0022}]*\")*[^\\x{0022}]*$))",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customcraftingtabs__4"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "customcraftingtabs__3": {
+      "patterns": []
+    },
+    "customcraftingtabs__4": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Required(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customcraftingtabs__5"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customcraftingtabs__5": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        }
+      ]
+    },
+    "customfabricators": {
+      "patterns": [
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfabricators__1"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customfabricators__1": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Ingredients(?= *:)|Required(?= *:)|ForceUnlockAtStart(?= *:)|UnlockedBy(?= *:)|PdaGroup(?= *:)|PdaCategory(?= *:)|DisplayName(?= *:)|ToolTip(?= *:)|Model(?= *:)|ColorTint(?= *:)|AllowedInBase(?= *:)|AllowedInCyclops(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfabricators__2"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customfabricators__2": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        },
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          },
+          "contentName": "string.quoted.double.easymarkup",
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(\\((?=([^\\x{0022}]*\"[^\\x{0022}]*\")*[^\\x{0022}]*$))",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfabricators__4"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "customfabricators__3": {
+      "patterns": []
+    },
+    "customfabricators__4": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Required(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfabricators__5"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customfabricators__5": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        }
+      ]
+    },
+    "customfoods": {
+      "patterns": [
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfoods__1"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customfoods__1": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|AmountCrafted(?= *:)|Ingredients(?= *:)|Required(?= *:)|Unlocks(?= *:)|ForceUnlockAtStart(?= *:)|LinkedItemIDs(?= *:)|Path(?= *:)|PdaGroup(?= *:)|PdaCategory(?= *:)|DisplayName(?= *:)|Tooltip(?= *:)|FunctionalID(?= *:)|SpriteItemID(?= *:)|FoodValue(?= *:)|WaterValue(?= *:)|DecayRateMod(?= *:)|FoodType(?= *:)|UseDrinkSound(?= *:)|UnlockedBy(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfoods__2"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customfoods__2": {
+      "patterns": [
+        {
+          "match": "(\\-)",
+          "name": "keyword.operator.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        },
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          },
+          "contentName": "string.quoted.double.easymarkup",
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(\\((?=([^\\x{0022}]*\"[^\\x{0022}]*\")*[^\\x{0022}]*$))",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfoods__4"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "customfoods__3": {
+      "patterns": []
+    },
+    "customfoods__4": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Required(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfoods__5"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customfoods__5": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        }
+      ]
+    },
+    "customfragmentcount": {
+      "patterns": [
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfragmentcount__1"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customfragmentcount__1": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|FragmentsToScan(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfragmentcount__2"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customfragmentcount__2": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        },
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          },
+          "contentName": "string.quoted.double.easymarkup",
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(\\((?=([^\\x{0022}]*\"[^\\x{0022}]*\")*[^\\x{0022}]*$))",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfragmentcount__4"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "customfragmentcount__3": {
+      "patterns": []
+    },
+    "customfragmentcount__4": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Required(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customfragmentcount__5"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customfragmentcount__5": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        }
+      ]
+    },
+    "customsizes": {
+      "patterns": [
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customsizes__1"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customsizes__1": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Width(?= *:)|Height(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customsizes__2"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customsizes__2": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        },
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          },
+          "contentName": "string.quoted.double.easymarkup",
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(\\((?=([^\\x{0022}]*\"[^\\x{0022}]*\")*[^\\x{0022}]*$))",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customsizes__4"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "customsizes__3": {
+      "patterns": []
+    },
+    "customsizes__4": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Required(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#customsizes__5"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "customsizes__5": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        }
+      ]
+    },
+    "modifiedrecipes": {
+      "patterns": [
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#modifiedrecipes__1"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "modifiedrecipes__1": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|AmountCrafted(?= *:)|Ingredients(?= *:)|Required(?= *:)|Unlocks(?= *:)|ForceUnlockAtStart(?= *:)|LinkedItemIDs(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#modifiedrecipes__2"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "modifiedrecipes__2": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        },
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          },
+          "contentName": "string.quoted.double.easymarkup",
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(\\((?=([^\\x{0022}]*\"[^\\x{0022}]*\")*[^\\x{0022}]*$))",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#modifiedrecipes__4"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "modifiedrecipes__3": {
+      "patterns": []
+    },
+    "modifiedrecipes__4": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Required(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#modifiedrecipes__5"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "modifiedrecipes__5": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        }
+      ]
+    },
+    "movedrecipes": {
+      "patterns": [
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#movedrecipes__1"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "movedrecipes__1": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|OldPath(?= *:)|Hidden(?= *:)|NewPath(?= *:)|Copied(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#movedrecipes__2"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "movedrecipes__2": {
+      "patterns": [
+        {
+          "match": "(YES|NO)",
+          "name": "constant.language.easymarkup"
+        },
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        },
+        {
+          "begin": "(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          },
+          "contentName": "string.quoted.double.easymarkup",
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.double.easymarkup"
+            }
+          }
+        },
+        {
+          "begin": "(\\((?=([^\\x{0022}]*\"[^\\x{0022}]*\")*[^\\x{0022}]*$))",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.open.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#movedrecipes__4"
+            }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.parenthesis.close.easymarkup"
+            }
+          }
+        }
+      ]
+    },
+    "movedrecipes__3": {
+      "patterns": []
+    },
+    "movedrecipes__4": {
+      "patterns": [
+        {
+          "match": "((ItemID(?= *:)|Required(?= *:)))",
+          "name": "entity.name.easymarkup"
+        },
+        {
+          "begin": "(\\:)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#movedrecipes__5"
+            }
+          ],
+          "end": "(\\;)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.terminator.easymarkup"
+            }
+          }
+        },
+        {
+          "include": "#main"
+        }
+      ]
+    },
+    "movedrecipes__5": {
+      "patterns": [
+        {
+          "match": "(\\d*[a-zA-Z]+\\d*)",
+          "name": "storage.type.easymarkup"
+        },
+        {
+          "match": "([0-9])",
+          "name": "constant.numeric.easymarkup"
+        }
+      ]
     }
   }
 }
